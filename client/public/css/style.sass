@@ -1,0 +1,2447 @@
+/*-----------------------------------------------------------------------------------*/
+/*  Mixins/variables
+/*-----------------------------------------------------------------------------------*/
+
+// Palette
+$primary-color-dark:   #0097A7
+$primary-color:        #00BCD4
+$primary-color-light:  #B2EBF2
+$primary-color-text:   #FFFFFF
+$accent-color:         #FF5722
+$primary-text-color:   #212121
+$secondary-text-color: #757575
+$divider-color:        #BDBDBD
+
+
+@mixin css-gradient ($from, $to, $start, $end)
+  background: $to
+  background: -webkit-linear-gradient(top, $from $start, $to $end)
+  background: -moz-linear-gradient(top, $from $start, $to $end)
+  background: -o-linear-gradient(top, $from $start, $to $end)
+  background: linear-gradient(to bottom, $from $start, $to $end)
+
+@mixin inline-block
+  display: inline-block
+  *display: inline
+  zoom: 1
+
+.inline
+  @include inline-block
+
+@mixin image2x($image, $width, $height)
+  @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6/2), (-webkit-min-device-pixel-ratio: 1.3),(min-device-pixel-ratio: 1.3),(min-resolution: 1.3dppx)
+    background-image: image-url($image)
+    background-size: $width $height
+
+@mixin transition($properties)
+  -webkit-transition: $properties
+  -moz-transition: $properties
+  transition: $properties
+
+@mixin transform($effect)
+  -webkit-transform: $effect
+  -moz-transform: $effect
+  transform: $effect
+  -o-transform: $effect
+
+=gradient($from, $to)
+  background-color: $from
+  background-image: -moz-linear-gradient($from, $to)
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to))
+  background-image: -webkit-linear-gradient($from, $to)
+  background-image: -o-linear-gradient($from, $to)
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Custom font
+/*-----------------------------------------------------------------------------------*/
+
+@import url("customfont.css")
+
+/*-----------------------------------------------------------------------------------*/
+/*  Document Setup
+/*-----------------------------------------------------------------------------------*/
+*
+  outline: 0 !important
+
+html, body
+  width: 100%
+
+html
+  height: 100%
+
+body
+  font-family: 'Lato', sans-serif !important
+  color: #666
+  min-height: 100%
+
+  &.page-header-fixed
+    padding-top: 90px
+
+  &.layout-boxed
+    .container-fluid.main-content
+      max-width: 1200px
+      margin: 0 auto
+
+  &.bg-1
+    //background: $primary-color
+    background: url(../images/bg.png) repeat 0 0
+
+.main-content
+  padding-bottom: 20px
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
+  font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif
+  margin: 0 0 15px
+  font-weight: 300
+
+h3
+  line-height: 1.4em
+
+p
+  &.lead
+    font-weight: 300
+
+strong
+  font-weight: 700
+
+a
+  color: $accent-color
+
+  &:hover
+    color: #666
+    text-decoration: none
+
+ul
+  &.no-style
+    list-style: none
+    padding: 0
+    margin-left: 0
+
+li
+  margin-bottom: 5px
+
+blockquote
+  margin-bottom: 30px
+
+  p
+    margin-bottom: 10px
+
+  &.pull-right
+    text-align: right
+
+dl
+  margin: 0 0 20px
+
+  dd
+    margin-bottom: 15px
+
+::-moz-selection
+  background: $accent-color
+  color: #FFF
+  text-shadow: none
+
+::selection
+  background: $accent-color
+  color: #FFF
+  text-shadow: none
+
+::-webkit-scrollbar
+  width: 8px
+
+::-webkit-scrollbar-thumb
+  background: #BBB
+  background: rgba(0,0,0,.15)
+  border-radius: 5px
+
+::-webkit-scrollbar-track
+  background: #DDD
+  background: rgba(0,0,0,.05)
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Background color helper classes
+/*-----------------------------------------------------------------------------------*/
+.bg-primary, .bg-success, .bg-info, .bg-warning, .bg-danger, .bg-muted
+  color: #FFF
+
+.bg-primary
+  background-color: $accent-color
+.bg-success
+  background-color: #60c560
+.bg-info
+  background-color: #5bc0de
+.bg-warning
+  background-color: #f0ad4e
+.bg-danger
+  background-color: #d9534f
+.bg-muted
+  background-color: #BBB
+.bg-white
+  background-color: #FFF
+
+/*-----------------------------------------------------------------------------------*/
+/*  Login 1
+/*-----------------------------------------------------------------------------------*/
+body.login1
+  padding: 0
+  height: 100%
+  overflow: hidden
+  background: url(../images/miami.png) no-repeat center center fixed
+  background-size: cover
+  -webkit-background-size: cover
+  -moz-background-size: cover
+  -o-background-size: cover
+  position: relative
+
+  &.signup
+    .login-container
+      margin-top: -215px
+      height: 430px
+
+  .login-wrapper
+    width: 100%
+    height: 100%
+
+  .login-container
+    background-color: rgba(255,255,255,.95)
+    border-radius: 40px
+    box-shadow: 0 0 50px rgba(0,0,0,.2)
+    padding: 30px
+    margin-bottom: 15px
+    width: 380px
+    height: 380px
+    text-align: center
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    margin: auto
+    //opacity: 0
+    //-webkit-transition: all 1s .5s
+    //-moz-transition: all 1s .5s
+    //transition: all 1s .5s
+
+    .login-container-signup
+      background-color: rgba(255,255,255,.95)
+      border-radius: 40px
+      box-shadow: 0 0 50px rgba(0,0,0,.2)
+      padding: 30px
+      margin-bottom: 15px
+      margin-top: -215px
+      height: 430px
+      width: 380px
+      text-align: center
+      position: absolute
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      margin: auto
+      //opacity: 0
+      //-webkit-transition: all 1s .5s
+      //-moz-transition: all 1s .5s
+      //transition: all 1s .5s
+
+    &.active
+      opacity: 1
+
+    img
+      margin: 10px auto 30px
+
+    .form-group
+      position: relative
+      margin-bottom: 0
+
+    input.form-control
+      height: 48px
+      font-size: 15px
+      box-shadow: none
+      border-radius: 0
+      border: 0
+      border-bottom: 1px solid #d6d6d6
+      padding-left: 0
+      padding-right: 0
+      background: transparent
+
+    .form-options
+      margin: 20px 0 30px
+
+      .checkbox
+        display: inline-block
+
+    input[type="submit"]
+      position: absolute
+      top: 15px
+      left: 45%
+      opacity: .5
+      font-family: "FontAwesome"
+      background: transparent
+      color: #888
+      border: 2px solid #888
+      width: 30px
+      height: 30px
+      border-radius: 50%
+      padding-left: 7px
+      line-height: 24px
+
+      &:hover
+        opacity: 1
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Header Styles
+/*-----------------------------------------------------------------------------------*/
+.no-boxshadow .navbar
+  border-bottom: 1px solid #DDD
+
+.navbar
+  background: rgba(255,255,255,.50)
+  //background: $primary-color
+  box-shadow: 0 1px 1px rgba(0,0,0,.15)
+  padding: 0
+  min-height: 45px
+  height: 66px
+  width: 100%
+  border: 0
+  margin-bottom: 28px
+  @include transition(all .3s)
+
+  .nav .open>a, .nav .open>a:hover, .nav .open>a:focus
+    background-color: transparent !important
+
+  .container-fluid.top-bar
+    height: 46px
+    border-bottom: 1px solid #e6e6e6
+    padding: 0 10px 0 20px
+    width: 100%
+    float: left
+
+    .navbar-toggle
+      position: absolute
+      top: 6px
+      left: 10px
+      width: 48px
+      height: 32px
+      padding: 8px 12px
+      margin: 0
+      background-color: transparent
+      border: 1px solid #dddddd
+      border-radius: 4px
+
+      .icon-bar
+        background-color: #c6c6c6
+        width: 22px
+        height: 2px
+        display: block
+        margin-bottom: 4px
+
+    form
+      margin-top: 6px
+
+    .nav
+      height: 100%
+      position: relative
+      z-index: 100
+
+      > li
+        height: 100%
+        margin-right: 5px
+        float: left
+
+        > a
+          display: block
+          height: 45px
+          line-height: 25px
+          padding: 8px 10px 9px
+          position: relative
+          @include transition(all .3s)
+
+          &:hover
+            background: #f8f8f8
+            background: rgba(0,0,0,.04)
+
+          > span
+            display: block
+            width: 28px
+            height: 28px
+            font-size: 28px
+            color: #999
+
+          p.counter
+            position: absolute
+            top: 5px
+            left: 0px
+            height: 18px
+            min-width: 18px
+            padding: 0 5px
+            border-radius: 9px
+            background: #e62828
+            text-align: center
+            line-height: 17px
+            color: #FFF
+            font-size: 11px
+
+        &.open, &.active, &.open.active
+          > a
+            background-color: #eee
+            span
+              color: $accent-color
+
+        &.settings
+          .settings-link
+            span
+              width: 20px
+              height: 20px
+              display: inline-block
+              vertical-align: middle
+              border-radius: 50%
+              margin-right: 12px
+
+            &.blue span
+              background: $accent-color
+            &.green span
+              background: #60c560
+            &.orange span
+              background: #f0ad4e
+            &.magenta span
+              background: #c741c9
+            &.gray span
+              background: #999
+
+        &.user
+          width: auto
+          margin-left: 5px
+          margin-right: 0
+
+          > a
+            padding: 5px 10px 6px
+            color: #999
+
+          img
+            border-radius: 50%
+            margin-right: 8px
+
+          .caret
+            vertical-align: middle
+            margin: -2px 0 0 8px
+            border-top-color: #999
+
+  .container-fluid.main-nav
+    height: 66px
+    float: left
+    width: 100%
+    @include transition(all .3s)
+
+    .nav-collapse
+      width: 100%
+
+      .nav
+        text-align: center
+        width: 100%
+        height: 100%
+        margin: 0
+
+        > li
+          float: none
+          display: inline-block
+          text-align: center
+          margin: 0 6px
+
+          > a
+            display: block
+            height: 100%
+            text-align: center
+            padding: 10px 15px 9px
+            font-size: 12px
+            font-weight: 400
+            color: #999
+            @include transition(all .3s)
+
+            span
+              font-size: 28px
+              width: 28px
+              height: 28px
+              display: block
+              margin: 0 auto 2px
+
+            .caret
+              margin-left: 6px
+              margin-right: -6px
+              border-top-color: #999
+
+            &.current
+              color: $accent-color
+
+              span
+                color: $accent-color
+
+              .caret
+                border-top-color: $accent-color
+
+            &:hover
+              background: #f8f8f8
+              background: rgba(0,0,0,.04)
+
+          .dropdown-menu
+            text-align: left
+
+  .nav > li > a
+    padding: 0
+
+  .nav > li > .dropdown-menu:before,
+  .nav > li > .dropdown-menu:after
+    display: none
+
+.navbar.scroll-hide.closed
+  //top: -45px
+  top: 0
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Page Titles
+/*-----------------------------------------------------------------------------------*/
+.page-title
+  padding: 0 20px
+  h1
+    margin-bottom: 25px
+    color: #5e5e5e
+    font-weight: 300
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Buttons
+/*-----------------------------------------------------------------------------------*/
+.btn
+  font-weight: 300
+  margin: 0 5px 5px 0
+  @include transition(all .15s)
+
+  &.active
+    box-shadow: none
+
+  .caret
+    margin: -2px 0 0 6px
+
+  [class^="fa"], &[class*="fa"]
+    display: inline-block
+    margin-right: 8px
+
+.btn-default
+  background: #BBB
+  border-color: #BBB
+  color: #FFF
+  .caret
+    border-top-color: #FFF
+  &:hover, &.active
+    background: transparent
+    color: #AAA
+    border-color: #BBB
+
+    .caret
+      border-top-color: #BBB
+
+  &.disabled, &[disabled]
+    @extend .btn-default
+
+.btn-primary
+  background: $accent-color
+  border-color: $accent-color
+  &:hover, &.active
+    background: transparent
+    color: $accent-color
+    border-color: $accent-color
+
+    .caret
+      border-top-color: $accent-color
+
+.btn-success
+  background: #60c560
+  border-color: #60c560
+  &:hover, &.active
+    background: transparent
+    color: #60c560
+    border-color: #60c560
+
+    .caret
+      border-top-color: #BBB
+
+.btn-info
+  &:hover, &.active
+    background: transparent
+    color: #5bc0de
+    border-color: #5bc0de
+
+    .caret
+      border-top-color: #5bc0de
+
+.btn-warning
+  &:hover, &.active
+    background: transparent
+    color: #f0ad4e
+    border-color: #f0ad4e
+
+    .caret
+      border-top-color: #f0ad4e
+
+.btn-danger
+  &:hover, &.active
+    background: transparent
+    color: #d9534f
+    border-color: #d9534f
+
+    .caret
+      border-top-color: #d9534f
+
+.btn-magenta
+  background: #d94084
+  border-color: #d94084
+  color: #FFF
+  &:hover, &.active
+    background: transparent
+    color: #d94084
+    border-color: #d94084
+
+    .caret
+      border-top-color: #d94084
+
+.btn-default-outline, .btn-primary-outline, .btn-success-outline, .btn-info-outline, .btn-warning-outline, .btn-danger-outline
+  background: transparent
+
+.btn-default-outline
+  color: #999
+  border: 1px solid #BBB
+
+  .caret
+    border-top-color: #BBB
+
+  &:hover, &.active
+    background: #BBB
+    color: #FFF
+
+    .caret
+      border-top-color: #FFF
+
+.btn-primary-outline
+  color: $accent-color
+  border: 1px solid $accent-color
+
+  .caret
+    border-top-color: $accent-color
+
+  &:hover, &.active
+    background: $accent-color
+    color: #FFF
+
+    .caret
+      border-top-color: #FFF
+
+.btn-success-outline
+  color: #60c560
+  border: 1px solid #60c560
+
+  .caret
+    border-top-color: #60c560
+
+  &:hover, &.active
+    background: #60c560
+    color: #FFF
+
+    .caret
+      border-top-color: #FFF
+
+.btn-info-outline
+  color: #5bc0de
+  border: 1px solid #5bc0de
+
+  .caret
+    border-top-color: #5bc0de
+
+  &:hover, &.active
+    background: #5bc0de
+    color: #FFF
+
+    .caret
+      border-top-color: #FFF
+
+.btn-warning-outline
+  color: #f0ad4e
+  border: 1px solid #f0ad4e
+
+  .caret
+    border-top-color: #f0ad4e
+
+  &:hover, &.active
+    background: #f0ad4e
+    color: #FFF
+
+    .caret
+      border-top-color: #FFF
+
+.btn-danger-outline
+  color: #d9534f
+  border: 1px solid #d9534f
+
+  .caret
+    border-top-color: #d9534f
+
+  &:hover, &.active
+    background: #d9534f
+    color: #FFF
+
+    .caret
+      border-top-color: #FFF
+
+.btn-magenta-outline
+  color: #d94084
+  border: 1px solid #d94084
+
+  .caret
+    border-top-color: #d94084
+
+  &:hover, &.active
+    background: #d94084
+    color: #FFF
+
+    .caret
+      border-top-color: #FFF
+
+.btn-group
+  margin: 0 5px 5px 0
+
+  &.pull-right
+    margin-right: 0
+
+  > .btn
+    margin: 0
+
+    &+ .dropdown-toggle
+      margin-left: 1px
+
+      .caret
+        margin-left: 0
+
+      &[class^="-outline"], &[class*="-outline"]
+        margin-left: -1px
+
+  &.dropup
+    .btn .caret
+      border-bottom-color: #FFF
+    .btn:hover
+      &[class^="-outline"], &[class*="-outline"]
+        .caret
+          border-bottom-color: #FFF
+
+  &.dropup .btn-default:hover .caret, &.dropup .btn-default-outline .caret
+    border-bottom-color: #BBB
+  &.dropup .btn-primary:hover .caret, &.dropup .btn-primary-outline .caret
+    border-bottom-color: $accent-color
+  &.dropup .btn-success:hover .caret, &.dropup .btn-success-outline .caret
+    border-bottom-color: #60c560
+  &.dropup .btn-info:hover .caret, &.dropup .btn-info-outline .caret
+    border-bottom-color: #5bc0de
+  &.dropup .btn-warning:hover .caret, &.dropup .btn-warning-outline .caret
+    border-bottom-color: #f0ad4e
+  &.dropup .btn-danger:hover .caret, &.dropup .btn-danger-outline .caret
+    border-bottom-color: #d9534f
+
+
+.nav-pills > li.active > a, .nav-pills > li.active>a:hover, .nav-pills > li.active > a:focus
+  background-color: $accent-color
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Dropdowns
+/*-----------------------------------------------------------------------------------*/
+.dropdown-menu
+  margin-top: 0
+  border-radius: 0
+  box-shadow: 0 1px 2px rgba(0,0,0,.2)
+  background: rgba(255,255,255,.96)
+  border: 1px solid #DDD
+  padding: 0
+  min-width: 120px
+  max-width: 300px
+
+  > li
+    margin: 0
+    > a
+      padding: 9px 15px 9px 2px
+      border-bottom: 1px solid #e2e2e2
+      color: #999
+      font-size: 12px
+      margin-left: 14px
+
+      &:hover, &.current
+        border-bottom-color: $accent-color
+        color: $accent-color
+        background: transparent
+
+      i
+        margin-right: 10px
+        font-size: 18px
+        vertical-align: middle
+
+    &:last-child
+      > a
+        border: 0
+
+    .notifications
+      margin: -1px -4px 0 0 !important
+      float: right
+
+    p
+      margin: 0 60px 0 0
+
+.messages
+  img
+    border-radius: 50%
+    margin-right: 14px
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  DataTables
+/*-----------------------------------------------------------------------------------*/
+.dataTable th
+  padding-right: 20px
+  position: relative
+  font-weight: normal
+
+  &.sorting
+    color: $accent-color
+    cursor: pointer
+    position: relative
+    &:after, &:before
+      content: ""
+      width: 0
+      height: 0
+      position: absolute
+      right: 12px
+      border-right: 5px solid transparent
+      border-left: 5px solid transparent
+    &:after
+      top: 16px
+      border-top: 5px solid $accent-color
+    &:before
+      top: 8px
+      border-bottom: 5px solid $accent-color
+
+  &.sorting_asc
+    color: $accent-color
+    cursor: pointer
+    position: relative
+    &:after
+      content: ""
+      width: 0
+      height: 0
+      position: absolute
+      right: 12px
+      top: 12px
+      border-bottom: 5px solid $accent-color !important
+      border-right: 5px solid transparent
+      border-left: 5px solid transparent
+
+  &.sorting_desc
+    color: $accent-color
+    cursor: pointer
+    position: relative
+    &:after
+      content: ""
+      width: 0
+      height: 0
+      position: absolute
+      right: 12px
+      top: 12px
+      border-top: 5px solid $accent-color !important
+      border-right: 5px solid transparent
+      border-left: 5px solid transparent
+
+th:active
+  outline: none
+
+#add-row
+  margin-right: 0
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Tables
+/*-----------------------------------------------------------------------------------*/
+.table
+  margin-bottom: 10px
+
+  th
+    font-size: 14px
+
+  td
+    font-size: 14px
+
+    &.actions
+      width: 90px
+      padding-right: 0
+
+      .action-buttons
+        width: 80px
+        margin: 0
+
+        a:last-child
+          margin-right: 0
+
+  tfoot
+    > tr > td
+      border-top: 0
+
+    > tr:first-child > td
+      border-top: 1px solid #ddd
+      padding-top: 15px
+
+.boxshadow .table input[type="checkbox"] + span:before, .boxshadow .table input[type="radio"] + span:before
+  margin-right: 0
+  margin-left: 0
+
+
+.check
+  width: 20px
+
+.check-header
+  .sorting
+    display: none
+
+.table > thead > tr > th
+  border-bottom: 2px solid #DDD
+
+.table thead>tr>th, .table tbody>tr>th, .table tfoot>tr>th, .table thead>tr>td, .table tbody>tr>td, .table tfoot>tr>td
+  vertical-align: middle
+
+.table-actions
+  margin: 0 6px 0 6px
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Labels
+/*-----------------------------------------------------------------------------------*/
+.label
+  font-size: 85%
+  line-height: 1.4
+  font-weight: 300
+  border-radius: 0px
+  margin: 0 5px
+  display: inline-block
+
+  &.label-success
+    background-color: #60c560
+
+.label-container
+  min-height: 160px !important
+  h3
+    margin-bottom: 25px
+  .label
+    font-weight: 300
+
+.label-primary
+  background-color: $accent-color
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Modal Styles
+/*-----------------------------------------------------------------------------------*/
+.modal
+  overflow-y: hidden
+
+.modal-open .modal
+  overflow-y: scroll
+
+// Fix page shift when body scroll is killed
+.modal-open .modal-shiftfix,
+.modal-open .modal-shiftfix .navbar-fixed-top,
+.modal-open .modal-shiftfix .navbar-fixed-bottom
+  overflow-y: scroll
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  List groups
+/*-----------------------------------------------------------------------------------*/
+.list-group
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
+  list-style: none
+  padding: 0
+
+  .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus
+    a
+      color: #FFF
+      background-color: $accent-color
+
+    p
+      border-bottom: 0
+
+    .badge
+      color: $accent-color
+      background-color: #FFF
+
+.list-group-item
+  border: 0
+  margin-bottom: 0
+  padding: 0
+
+  a
+    color: #666
+    display: block
+    padding: 0 0 0 15px
+
+    &:hover
+      background-color: #f2f2f2
+
+  p
+    margin-bottom: 0
+    padding: 10px 15px 10px 0
+    border-bottom: 1px solid #DDD
+
+  .badge
+    float: right
+
+  &:first-child
+    border-radius: 0
+
+  &:last-child
+    border-radius: 0
+
+    p
+      border-bottom: 0
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Widget-Container
+/*-----------------------------------------------------------------------------------*/
+.widget-container
+  min-height: 320px
+  background: white
+  border-radius: 15px
+  box-shadow: 0 1px 2px rgba(0,0,0,.1)
+  margin-bottom: 20px
+
+  &.fluid-height
+    height: auto
+    min-height: 0
+
+  &.small
+    min-height: 120px
+    height: 200px
+
+  &.gallery
+    min-height: 400px
+
+  .heading
+    background: rgba(255, 255, 255, 0.94)
+    border-radius: 15px
+    height: 50px
+    padding: 15px 15px
+    color: $accent-color
+    font-size: 15px
+    width: 100%
+    font-weight: 400
+    margin: 0
+    font-family: "chivo"
+
+    [class^="fa"], [class*="fa"]
+      margin-right: 10px
+      font-size: 14px
+
+      &.pull-right
+        margin-right: 0px
+        margin-left: 15px
+        opacity: 0.35
+        font-size: 1.1em
+
+      &:hover
+        cursor: pointer
+        opacity: 1
+  .tabs
+    background: #f5f5f5
+    border-bottom: 1px solid #DDD
+
+  .widget-content
+    width: 100%
+
+  &.scrollable
+    position: relative
+    height: 400px
+    padding-top: 50px
+
+    &.chat-home
+      height: 427px
+
+    .heading
+      position: absolute
+      top: 0
+      left: 0
+      z-index: 10
+
+    .shadow
+      box-shadow: 0 2px 2px -1px rgba(0,0,0,.1)
+
+    .widget-content
+      height: 100%
+      position: relative
+      overflow-y: auto
+      -webkit-overflow-scrolling: touch
+
+.padded
+  padding: 15px
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Statistics Figures
+/*-----------------------------------------------------------------------------------*/
+.stats-container
+  min-height: 120px
+  height: 120px
+  text-align: center
+
+
+  [class^="col-"], [class*="col-"]
+    border-right: 1px solid #e6e6e6
+    height: 100%
+    margin-bottom: 0
+
+    &:last-child
+      border: 0
+
+    .number
+      font-size: 3.8em
+      font-weight: 100
+      color: #007aff
+      line-height: 1.4em
+      padding-top: 8px
+      letter-spacing: -.06em
+
+    .text
+      font-weight: 300
+      color: #999
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  jQuery Sparkline Tooltip fix
+/*-----------------------------------------------------------------------------------*/
+.jqstooltip
+  -webkit-box-sizing: content-box
+  -moz-box-sizing: content-box
+  box-sizing: content-box
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Line Charts
+/*-----------------------------------------------------------------------------------*/
+.line-chart
+  width: 100%
+
+  .chart-text-axis
+    margin: 4px 0 0 !important
+
+    li
+      width: 8.33% !important
+      margin: 0 !important
+
+.pie-chart
+  text-align: center
+
+  #pie-chart
+    display: inline-block
+    vertical-align: middle
+
+  ul.chart-key
+    display: inline-block
+    vertical-align: middle
+    list-style: none
+    padding: 0
+    margin: 0 0 0 30px
+
+    li
+      margin: 10px 0
+      color: #888
+
+      span
+        width: 20px
+        height: 15px
+        margin-right: 10px
+        display: inline-block
+        vertical-align: middle
+
+        &.green
+          background: #81e970
+        &.orange
+          background: #f5af50
+        &.red
+          background: #f46f50
+        &.blue
+          background: #a0eeed
+
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  jQuery Easy Pie Chart
+/*-----------------------------------------------------------------------------------*/
+.easyPieChart
+  position: relative
+  text-align: center
+  margin: 5px auto 27px
+
+  canvas
+    position: absolute
+    top: 0
+    left: 0
+
+.pie-number
+  font-size: 4.5em
+  font-weight: 100
+  letter-spacing: -.05em
+  color: #BBB
+
+.pie-text
+  text-align: center
+  padding: 8px 0 14px 0
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Stats Styles
+/*-----------------------------------------------------------------------------------*/
+.chart-list
+  text-decoration: none
+  display: inline
+  padding: 0 2px 0 0
+
+.chart-list-item
+  width: 55px
+  text-align: left
+
+.chart-number
+  font-size: 2.5em
+  font-weight: 100
+
+.bar-chart-widget
+  text-align: center
+
+  .bar-chart-info
+    display: inline-block
+    vertical-align: middle
+    margin: 0 40px 14px -21px
+    text-align: center
+
+    &.visible-lg
+      display: inline-block !important
+
+    p
+      font-weight: 300
+      color: #BBB
+
+    .chart-number
+      font-size: 4em
+      font-weight: 100
+      color: #60C560
+      line-height: 1.2em
+
+      i
+        margin: 12px 10px 0 0
+        opacity: 0.5
+        font-size: .9em
+        display: inline-block
+        vertical-align: top
+
+    .chart-text
+      font-size: .8em
+      font-weight: 400
+      color: #888
+
+.chart-graph
+  display: inline-block
+  vertical-align: middle
+
+  .chart-text-axis
+    padding: 0 0 0 5px
+    width: 100%
+    margin: 6px 0 0
+    list-style: none
+
+    li
+      font-size: .7em
+      font-weight: 400
+      text-align: center
+      width: 12px
+      margin-right: 6px
+      float: left
+      color: #AAA
+
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Social Dashboard
+/*-----------------------------------------------------------------------------------*/
+.social-wrapper
+  #hidden-items
+    display: none
+
+  #social-container
+    margin: 0 auto
+    max-width: 100%
+
+    .item
+      width: 350px
+      margin-bottom: 20px
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15)
+      margin: 10px
+      float: left
+
+    .item-hidden
+      display: none
+
+    .share-widget
+      background: #f8f8f8
+      font-weight: 200
+      padding-top: 3px
+      height: 180px
+
+      textarea
+        height: 94px
+        resize: none
+
+      .share-options
+        text-align: center
+        cursor: pointer
+        margin: 0
+
+        &:hover, &.active
+          color: $accent-color
+
+        p
+          margin-bottom: 0
+
+    img.social-avatar
+      border-radius: 50%
+      margin-right: 15px
+
+    .profile-widget
+      height: 180px
+      padding: 5px
+      position: relative
+
+      .profile-info
+        padding: 0
+        margin: 0
+
+        .social-avatar
+          margin-right: 20px
+
+        .user-name
+          font-size: 20px
+          line-height: 1
+          font-weight: 300
+          display: inline-block
+          margin-bottom: 6px
+
+        .profile-details
+          display: inline-block
+
+          p
+            font-size: 13px
+            margin-bottom: 2px
+            color: #999
+            font-weight: 300
+
+          em
+            font-size: 13px
+            color: #999
+            font-weight: 300
+            i
+              margin-right: 6px
+
+      .profile-stats
+        position: absolute
+        bottom: 0
+        left: 0
+        width: 100%
+        height: 75px
+
+        > div
+          height: 100%
+          border-left: 1px solid #e0e0e0
+          padding: 0px
+          margin: 0px
+          text-align: center
+          padding-top: 6px
+          color: #999
+
+          &:first-child
+            border-left: 0px
+
+          h2
+            font-weight: 100
+            margin-bottom: 5px
+
+          p
+            font-weight: 300
+
+    .social-entry
+
+      p.content
+        font-size: 14px
+        font-weight: 300
+        margin: 15px 0
+
+      .padded
+        p.content
+          margin-top: 0
+
+      .profile-info
+        .social-avatar
+          margin-right: 14px
+
+        .user-name
+          font-size: 18px
+          font-weight: 300
+          margin: 2px 0 6px
+
+        & + p.content
+          margin-top: 15px
+
+      .profile-details
+        display: inline-block
+
+        p
+          font-size: 13px
+          margin-bottom: 2px
+          color: #999
+
+        em
+          font-size: 13px
+          color: #999
+          font-weight: 300
+          i
+            margin-right: 6px
+
+      .social-content-media
+        display: block
+
+      .btn
+        margin: 0 2px 0 0
+        cursor: pointer
+        font-size: 14px
+        padding: 2px 8px
+
+        i
+          margin-right: 0
+          font-size: 14px
+
+      .comments
+        background: #f6f6f6
+        margin-top: 5px
+        padding-top: 15px
+
+        .social-avatar
+          margin-right: 12px
+
+        p.content
+          margin: 8px 0 22px
+
+        .form-group
+          margin-bottom: 0px
+
+  #load-more
+    margin-top: 20px
+    padding-bottom: 12px
+    padding-top: 8px
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Social Communities Widget
+/*-----------------------------------------------------------------------------------*/
+.social-widget
+  font-weight: 200
+  color: #fff
+  text-align: center
+  height: 120px
+  padding-top: 14px
+
+  &.twitter
+    background-color: #00b2f1
+  &.facebook
+    background-color: #517FA4
+  &.pinterest
+    background-color: #e54c42
+  &.instagram
+    background-color: #F0AD4E
+  &.dribbble
+    background-color: #ea4c89
+
+  [class^="fa"], [class*=" fa"]
+    vertical-align: middle
+    font-size: 70px
+    margin: 0 10px 0 -20px
+
+  .social-data
+    text-align: center
+    margin-left: 10px
+    display: inline-block
+    vertical-align: middle
+
+    h1
+      font-weight: 100
+      font-size: 60px
+      margin: 0
+      padding: 0
+
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Chat widget
+/*-----------------------------------------------------------------------------------*/
+.chat
+  padding-bottom: 52px
+
+  .widget-content
+    padding-right: 20px
+    background-color: #FFF
+
+    .scrollbar-path-vertical
+      bottom: 56px !important
+
+    ul
+      list-style: none
+      padding: 0
+
+      li
+        margin-bottom: 14px
+        padding-left: 40px
+        padding-right: 80px
+        position: relative
+
+        &:last-child
+          margin-bottom: 0
+
+        img
+          position: absolute
+          bottom: -2px
+          left: 0
+          border-radius: 50%
+
+        .bubble
+          padding: 12px 15px
+          background: #e5e5ea
+          border-radius: 15px
+          position: relative
+
+          .user-name
+            font-size: 1.1em
+            margin-bottom: 8px
+            display: inline-block
+
+          p.message
+            font-size: .95em
+            margin-bottom: 12px
+            color: #333
+
+          .time
+            font-size: .8em
+            color: #888
+            margin-bottom: 0
+
+        &.current-user
+          padding-right: 40px
+          padding-left: 80px
+
+          img
+            right: 0
+            left: auto
+
+          .bubble
+            background: #178efe
+
+          p, a
+            color: #fff !important
+
+          .time
+            opacity: .75
+
+  .post-message
+    position: absolute
+    bottom: 0
+    left: 0
+    width: 100%
+    height: 52px
+    padding: 8px 60px 8px 8px
+    background: #f2f2f2
+    border-top: 1px solid #CCC
+
+    input[type="text"]
+      width: 100%
+      height: 100%
+
+    input[type="submit"]
+      position: absolute
+      top: 12px
+      right: 10px
+      margin: 0
+      border: 0
+      background: transparent
+      color: $accent-color
+      font-weight: 600
+      font-size: 14px
+
+
+.widget-container.chat-page
+  height: 700px
+  padding: 0 0 102px 222px
+  position: relative
+  background-color: #f2f2f2
+
+  .contact-list
+    position: absolute
+    top: 0
+    left: 0
+    width: 222px
+    height: 100%
+    border-right: 1px solid #DDD
+    padding-top: 50px
+
+    .heading
+      background-color: transparent
+      color: #777
+      border-bottom: 1px solid #d6d6d6
+      font-size: 16px
+      padding-top: 12px
+      padding-bottom: 14px
+      background-color: #f2f2f2
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+
+      i
+        margin-top: 4px
+        font-size: 1em
+
+    ul
+      list-style: none
+      padding-left: 15px
+      margin: 0
+      overflow-y: auto
+      overflow-x: hidden
+      height: 100%
+
+      li
+        border-bottom: 1px solid #d6d6d6
+        margin: 0
+
+        a
+          display: block
+          position: relative
+          left: -15px
+          width: 220px
+          padding-left: 15px
+          padding: 8px 0 8px 15px
+          color: #888
+
+          &:hover
+            background-color: #e6e6e6
+            color: #666
+
+        img
+          border-radius: 50%
+          margin-right: 10px
+
+        i
+          font-size: 12px
+          float: right
+          margin: 9px 20px 0 0
+
+  > .heading
+    position: relative !important
+
+  .post-message
+    position: relative
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Icons
+/*-----------------------------------------------------------------------------------*/
+.icons
+  .row
+    margin: 0 !important
+
+    [class^="col-"], [class*="col-"]
+      height: 32px
+      line-height: 32px
+      border-radius: 5px
+      margin-bottom: 0 !important
+      color: #666
+      @include transition(all .2s)
+
+      [class^="fa"], [class*="fa"]
+        width: 32px
+        font-size: 14px
+        text-align: right
+        margin-right: 20px
+        vertical-align: middle
+        @include transition(all .12s)
+
+      .glyphicon
+        margin-top: -5px
+        width: 32px
+        font-size: 14px
+        text-align: center
+        margin-right: 10px
+        vertical-align: middle
+        @include transition(all .12s)
+
+      &:hover
+        background-color: #f6f6f6
+
+        [class^="fa"], [class*="fa"], .glyphicon
+          font-size: 28px
+
+        .glyphicon
+          margin-top: -8px
+
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Form styles
+/*-----------------------------------------------------------------------------------*/
+fieldset
+  border: 0
+  margin: 0
+  padding: 0
+
+label
+  font-weight: normal
+
+  &.error
+    color: #d9534f
+    margin-top: 5px
+
+input[type="text"]
+  box-shadow: none !important
+
+.form-horizontal .form-group
+  margin-left: 0
+  margin-right: 0
+
+.form-control
+  @include transition(all .5s)
+
+  &:focus
+    border-color: $accent-color
+    box-shadow: none
+
+  &.has-error, &.error
+    border-color: #d9534f
+
+.form-group
+  [class^="col-"], [class*="col-"]
+    margin-bottom: 0
+
+  label
+    margin-bottom: 5px
+
+.input-group-btn>.btn
+  margin-left: -1px
+
+  &+.btn
+    margin-left: -1px
+
+.opacity
+  .radio, .checkbox
+    margin: 0 0 10px
+
+  .radio-inline, .checkbox-inline
+    padding-top: 9px
+    margin-right: 20px
+
+    &+.radio-inline, &+.checkbox-inline
+      margin-left: 0
+
+  input[type="checkbox"], input[type="radio"]
+    display: none
+
+    &+ span
+      &:before
+        content: ""
+        width: 18px
+        height: 18px
+        display: inline-block
+        vertical-align: middle
+        margin-right: 10px
+        margin-left: -20px
+        background: #FFF
+        border-radius: 3px
+        border: 1px solid #c8c8c8
+
+  input[type="checkbox"]:checked + span:before
+    background: $accent-color
+    border-color: $accent-color
+
+  input[type="radio"]
+    display: none
+
+    &+ span
+      position: relative
+
+      &:before
+        border-radius: 50%
+
+    &:checked + span
+      &:after
+        content: ""
+        width: 8px
+        height: 8px
+        position: absolute
+        top: 6px
+        left: -15px
+        background-color: $accent-color
+        border-radius: 50%
+        display: block
+
+.has-warning
+  .help-block, .control-label
+    color: #f0ad4e
+
+  .form-control
+    border-color: #f0ad4e
+
+.has-error
+  .help-block, .control-label
+    color: #d9534f
+
+  .form-control
+    border-color: #d9534f
+
+.has-success
+  .help-block, .control-label
+    color: #60c560
+
+  .form-control
+    border-color: #60c560
+
+.radio + .radio:last-child, .checkbox + .checkbox:last-child
+  margin-bottom: 0
+
+.form-photo
+  margin: 4px 0 12px
+
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Drag and drop
+/*-----------------------------------------------------------------------------------*/
+.single-file-drop
+  text-align: center
+  border: 2px dashed #ddd
+
+  h4
+    padding: 50px 0 45px
+    line-height: 1.4
+
+  img
+    max-width: 100%
+
+  &.profile-drop
+    display: inline-block
+    min-width: 200px
+    height: 200px
+    margin: 4px 0 8px
+    overflow: hidden
+    position: relative
+
+    h4
+      padding-top: 70px
+
+    img
+      max-width: none
+      height: 200px
+
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Bootstrap Tab Styles
+/*-----------------------------------------------------------------------------------*/
+.nav-tabs > li > a
+  border-radius: 0px
+
+.nav-tabs
+  margin-top: -8px
+
+.nav-tabs > li> a:hover
+
+/*-----------------------------------------------------------------------------------*/
+/*  Bootstrap Alert Styles
+/*-----------------------------------------------------------------------------------*/
+.alert
+  border-radius: 0px
+
+button.close
+  margin-left: 18px
+/*-----------------------------------------------------------------------------------*/
+/*  Bootstrap Pagination
+/*-----------------------------------------------------------------------------------*/
+.pagination
+  margin: 12px 0
+
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus
+  background-color: $accent-color
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Responsive Styles
+/*-----------------------------------------------------------------------------------*/
+.row
+  margin: 0 10px 0
+
+  .row
+    margin: 0 -10px 0
+
+  &+ .row
+    margin-top: 20px
+
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12
+  padding: 0 10px
+
+.hideme
+  display: none
+
+.hidden-xs
+  &.inline
+  display: inline-block
+
+/*-----------------------------------------------------------------------------------*/
+/*  Messages
+/*-----------------------------------------------------------------------------------*/
+.compose-btn
+  margin-bottom: 10px
+
+.messages
+  height: 650px
+
+  .widget-container
+    height: 100%
+
+  .message-list
+    padding: 0
+    height: 100%
+
+    .list-group
+      box-shadow: none
+      margin: 0
+      border-right: 1px solid #DDD
+      height: 100%
+      overflow-y: auto
+
+      .list-group-item
+        &:last-child p
+          border-bottom: 1px solid #DDD
+
+        a
+          position: relative
+
+          .status
+            width: 10px
+            height: 10px
+            float: left
+            border-radius: 50%
+            margin-top: 13px
+
+            &.unread
+              background-color: $accent-color
+
+          .favorite
+            position: absolute
+            left: 13px
+            top: 30px
+            display: none
+
+            &.fa-star-o
+              color: #AAA
+            &.fa-star
+              color: #F0AD44
+              display: block
+
+          h2
+            font-size: 14px
+            font-weight: 600
+            padding: 10px 10px 0 20px
+            margin-bottom: 4px
+
+            span
+              float: right
+              font-size: 12px
+              font-weight: 400
+
+          p
+            padding-top: 0
+            padding-left: 20px
+            font-size: 13px
+
+        &:hover
+          a .favorite
+            display: block
+
+  .message-content
+    padding: 0
+    height: 100%
+    overflow-y: auto
+    padding-left: 20px
+
+    .message-header
+      position: relative
+      padding: 15px 15px 5px 0
+      border-bottom: 1px solid #DDD
+
+      .date
+        font-size: 13px
+
+      .message-actions
+        position: absolute
+        bottom: -12px
+        left: 50%
+        margin: 0 0 0 -64px
+
+        .btn
+          font-size: 14px
+          width: 32px
+          padding: 0
+          background: #FFF
+          height: 24px
+          line-height: 1.6
+
+          &:hover
+            background: #BBB
+
+          .fa
+            margin: 0
+
+    .message-text
+      padding: 30px 15px 15px 0
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  404 Page
+/*-----------------------------------------------------------------------------------*/
+body.fourofour
+  background-color: $accent-color
+  padding: 0
+  position: relative
+
+  .fourofour-container
+    max-width: 400px
+    width: 400px
+    text-align: center
+    color: #FFF
+    position: absolute
+    top: 50%
+    left: 50%
+    margin: -200px 0 0 -200px
+
+    h1
+      font-size: 200px
+      font-weight: 100
+      text-shadow: rgb(0, 98, 204) 1px 1px, rgb(0, 98, 204) 2px 2px, rgb(0, 98, 204) 3px 3px, rgb(0, 98, 205) 4px 4px, rgb(0, 98, 205) 5px 5px, rgb(0, 98, 205) 6px 6px, rgb(0, 98, 205) 7px 7px, rgb(0, 98, 206) 8px 8px, rgb(0, 99, 206) 9px 9px, rgb(0, 99, 206) 10px 10px, rgb(0, 99, 206) 11px 11px, rgb(0, 99, 207) 12px 12px, rgb(0, 99, 207) 13px 13px, rgb(0, 99, 207) 14px 14px, rgb(0, 99, 207) 15px 15px, rgb(0, 99, 208) 16px 16px, rgb(0, 100, 208) 17px 17px, rgb(0, 100, 208) 18px 18px, rgb(0, 100, 208) 19px 19px, rgb(0, 100, 209) 20px 20px, rgb(0, 100, 209) 21px 21px, rgb(0, 100, 209) 22px 22px, rgb(0, 100, 209) 23px 23px, rgb(0, 100, 210) 24px 24px, rgb(0, 101, 210) 25px 25px, rgb(0, 101, 210) 26px 26px, rgb(0, 101, 210) 27px 27px, rgb(0, 101, 211) 28px 28px, rgb(0, 101, 211) 29px 29px, rgb(0, 101, 211) 30px 30px, rgb(0, 101, 211) 31px 31px, rgb(0, 101, 212) 32px 32px, rgb(0, 101, 212) 33px 33px, rgb(0, 102, 212) 34px 34px, rgb(0, 102, 212) 35px 35px, rgb(0, 102, 213) 36px 36px, rgb(0, 102, 213) 37px 37px, rgb(0, 102, 213) 38px 38px, rgb(0, 102, 213) 39px 39px, rgb(0, 102, 214) 40px 40px, rgb(0, 102, 214) 41px 41px, rgb(0, 103, 214) 42px 42px, rgb(0, 103, 214) 43px 43px, rgb(0, 103, 215) 44px 44px, rgb(0, 103, 215) 45px 45px, rgb(0, 103, 215) 46px 46px, rgb(0, 103, 215) 47px 47px, rgb(0, 103, 216) 48px 48px, rgb(0, 103, 216) 49px 49px, rgb(0, 104, 216) 50px 50px, rgb(0, 104, 217) 51px 51px, rgb(0, 104, 217) 52px 52px, rgb(0, 104, 217) 53px 53px, rgb(0, 104, 217) 54px 54px, rgb(0, 104, 218) 55px 55px, rgb(0, 104, 218) 56px 56px, rgb(0, 104, 218) 57px 57px, rgb(0, 104, 218) 58px 58px, rgb(0, 105, 219) 59px 59px, rgb(0, 105, 219) 60px 60px, rgb(0, 105, 219) 61px 61px, rgb(0, 105, 219) 62px 62px, rgb(0, 105, 220) 63px 63px, rgb(0, 105, 220) 64px 64px, rgb(0, 105, 220) 65px 65px, rgb(0, 105, 220) 66px 66px, rgb(0, 106, 221) 67px 67px, rgb(0, 106, 221) 68px 68px, rgb(0, 106, 221) 69px 69px, rgb(0, 106, 221) 70px 70px, rgb(0, 106, 222) 71px 71px, rgb(0, 106, 222) 72px 72px, rgb(0, 106, 222) 73px 73px, rgb(0, 106, 222) 74px 74px, rgb(0, 107, 223) 75px 75px, rgb(0, 107, 223) 76px 76px, rgb(0, 107, 223) 77px 77px, rgb(0, 107, 223) 78px 78px, rgb(0, 107, 224) 79px 79px, rgb(0, 107, 224) 80px 80px, rgb(0, 107, 224) 81px 81px, rgb(0, 107, 224) 82px 82px, rgb(0, 107, 225) 83px 83px, rgb(0, 108, 225) 84px 84px, rgb(0, 108, 225) 85px 85px, rgb(0, 108, 225) 86px 86px, rgb(0, 108, 226) 87px 87px, rgb(0, 108, 226) 88px 88px, rgb(0, 108, 226) 89px 89px, rgb(0, 108, 226) 90px 90px, rgb(0, 108, 227) 91px 91px, rgb(0, 109, 227) 92px 92px, rgb(0, 109, 227) 93px 93px, rgb(0, 109, 227) 94px 94px, rgb(0, 109, 228) 95px 95px, rgb(0, 109, 228) 96px 96px, rgb(0, 109, 228) 97px 97px, rgb(0, 109, 228) 98px 98px, rgb(0, 109, 229) 99px 99px, rgb(0, 110, 229) 100px 100px, rgb(0, 110, 229) 101px 101px, rgb(0, 110, 230) 102px 102px, rgb(0, 110, 230) 103px 103px, rgb(0, 110, 230) 104px 104px, rgb(0, 110, 230) 105px 105px, rgb(0, 110, 231) 106px 106px, rgb(0, 110, 231) 107px 107px, rgb(0, 110, 231) 108px 108px, rgb(0, 111, 231) 109px 109px, rgb(0, 111, 232) 110px 110px, rgb(0, 111, 232) 111px 111px, rgb(0, 111, 232) 112px 112px, rgb(0, 111, 232) 113px 113px, rgb(0, 111, 233) 114px 114px, rgb(0, 111, 233) 115px 115px, rgb(0, 111, 233) 116px 116px, rgb(0, 112, 233) 117px 117px, rgb(0, 112, 234) 118px 118px, rgb(0, 112, 234) 119px 119px, rgb(0, 112, 234) 120px 120px, rgb(0, 112, 234) 121px 121px, rgb(0, 112, 235) 122px 122px, rgb(0, 112, 235) 123px 123px, rgb(0, 112, 235) 124px 124px, rgb(0, 113, 235) 125px 125px, rgb(0, 113, 236) 126px 126px, rgb(0, 113, 236) 127px 127px, rgb(0, 113, 236) 128px 128px, rgb(0, 113, 236) 129px 129px, rgb(0, 113, 237) 130px 130px, rgb(0, 113, 237) 131px 131px, rgb(0, 113, 237) 132px 132px, rgb(0, 113, 237) 133px 133px, rgb(0, 114, 238) 134px 134px, rgb(0, 114, 238) 135px 135px, rgb(0, 114, 238) 136px 136px, rgb(0, 114, 238) 137px 137px, rgb(0, 114, 239) 138px 138px, rgb(0, 114, 239) 139px 139px, rgb(0, 114, 239) 140px 140px, rgb(0, 114, 239) 141px 141px, rgb(0, 115, 240) 142px 142px, rgb(0, 115, 240) 143px 143px, rgb(0, 115, 240) 144px 144px, rgb(0, 115, 240) 145px 145px, rgb(0, 115, 241) 146px 146px, rgb(0, 115, 241) 147px 147px, rgb(0, 115, 241) 148px 148px, rgb(0, 115, 241) 149px 149px, rgb(0, 116, 242) 150px 150px, rgb(0, 116, 242) 151px 151px, rgb(0, 116, 242) 152px 152px, rgb(0, 116, 243) 153px 153px, rgb(0, 116, 243) 154px 154px, rgb(0, 116, 243) 155px 155px, rgb(0, 116, 243) 156px 156px, rgb(0, 116, 244) 157px 157px, rgb(0, 116, 244) 158px 158px, rgb(0, 117, 244) 159px 159px, rgb(0, 117, 244) 160px 160px, rgb(0, 117, 245) 161px 161px, rgb(0, 117, 245) 162px 162px, rgb(0, 117, 245) 163px 163px, rgb(0, 117, 245) 164px 164px, rgb(0, 117, 246) 165px 165px, rgb(0, 117, 246) 166px 166px, rgb(0, 118, 246) 167px 167px, rgb(0, 118, 246) 168px 168px, rgb(0, 118, 247) 169px 169px, rgb(0, 118, 247) 170px 170px, rgb(0, 118, 247) 171px 171px, rgb(0, 118, 247) 172px 172px, rgb(0, 118, 248) 173px 173px, rgb(0, 118, 248) 174px 174px, rgb(0, 119, 248) 175px 175px, rgb(0, 119, 248) 176px 176px, rgb(0, 119, 249) 177px 177px, rgb(0, 119, 249) 178px 178px, rgb(0, 119, 249) 179px 179px, rgb(0, 119, 249) 180px 180px, rgb(0, 119, 250) 181px 181px, rgb(0, 119, 250) 182px 182px, rgb(0, 119, 250) 183px 183px, rgb(0, 120, 250) 184px 184px, rgb(0, 120, 251) 185px 185px, rgb(0, 120, 251) 186px 186px, rgb(0, 120, 251) 187px 187px, rgb(0, 120, 251) 188px 188px, rgb(0, 120, 252) 189px 189px, rgb(0, 120, 252) 190px 190px, rgb(0, 120, 252) 191px 191px, rgb(0, 121, 252) 192px 192px, rgb(0, 121, 253) 193px 193px, rgb(0, 121, 253) 194px 194px, rgb(0, 121, 253) 195px 195px, rgb(0, 121, 253) 196px 196px, rgb(0, 121, 254) 197px 197px, rgb(0, 121, 254) 198px 198px, rgb(0, 121, 254) 199px 199px, rgb(0, 122, 255) 200px 200px
+
+    h2
+      font-size: 32px
+      font-weight: 100
+      margin-bottom: 40px
+
+    a.btn
+      border-color: #FFF
+      color: #FFF
+
+      &:hover
+        color: $accent-color
+        background-color: #FFF
+
+  &.bg-danger
+    background-color: #d9534f
+
+    h1
+      text-shadow: rgb(184, 71, 67) 1px 1px, rgb(184, 71, 67) 2px 2px, rgb(184, 71, 67) 3px 3px, rgb(184, 71, 67) 4px 4px, rgb(184, 71, 67) 5px 5px, rgb(184, 71, 67) 6px 6px, rgb(185, 71, 67) 7px 7px, rgb(185, 71, 67) 8px 8px, rgb(185, 71, 67) 9px 9px, rgb(185, 71, 67) 10px 10px, rgb(185, 71, 67) 11px 11px, rgb(185, 71, 67) 12px 12px, rgb(186, 71, 67) 13px 13px, rgb(186, 71, 67) 14px 14px, rgb(186, 71, 67) 15px 15px, rgb(186, 71, 67) 16px 16px, rgb(186, 72, 68) 17px 17px, rgb(186, 72, 68) 18px 18px, rgb(187, 72, 68) 19px 19px, rgb(187, 72, 68) 20px 20px, rgb(187, 72, 68) 21px 21px, rgb(187, 72, 68) 22px 22px, rgb(187, 72, 68) 23px 23px, rgb(187, 72, 68) 24px 24px, rgb(188, 72, 68) 25px 25px, rgb(188, 72, 68) 26px 26px, rgb(188, 72, 68) 27px 27px, rgb(188, 72, 68) 28px 28px, rgb(188, 72, 68) 29px 29px, rgb(188, 72, 68) 30px 30px, rgb(189, 72, 68) 31px 31px, rgb(189, 72, 68) 32px 32px, rgb(189, 72, 68) 33px 33px, rgb(189, 73, 69) 34px 34px, rgb(189, 73, 69) 35px 35px, rgb(189, 73, 69) 36px 36px, rgb(190, 73, 69) 37px 37px, rgb(190, 73, 69) 38px 38px, rgb(190, 73, 69) 39px 39px, rgb(190, 73, 69) 40px 40px, rgb(190, 73, 69) 41px 41px, rgb(190, 73, 69) 42px 42px, rgb(191, 73, 69) 43px 43px, rgb(191, 73, 69) 44px 44px, rgb(191, 73, 69) 45px 45px, rgb(191, 73, 69) 46px 46px, rgb(191, 73, 69) 47px 47px, rgb(191, 73, 69) 48px 48px, rgb(192, 73, 69) 49px 49px, rgb(192, 74, 70) 50px 50px, rgb(192, 74, 70) 51px 51px, rgb(192, 74, 70) 52px 52px, rgb(192, 74, 70) 53px 53px, rgb(192, 74, 70) 54px 54px, rgb(193, 74, 70) 55px 55px, rgb(193, 74, 70) 56px 56px, rgb(193, 74, 70) 57px 57px, rgb(193, 74, 70) 58px 58px, rgb(193, 74, 70) 59px 59px, rgb(193, 74, 70) 60px 60px, rgb(194, 74, 70) 61px 61px, rgb(194, 74, 70) 62px 62px, rgb(194, 74, 70) 63px 63px, rgb(194, 74, 70) 64px 64px, rgb(194, 74, 70) 65px 65px, rgb(194, 74, 70) 66px 66px, rgb(195, 75, 71) 67px 67px, rgb(195, 75, 71) 68px 68px, rgb(195, 75, 71) 69px 69px, rgb(195, 75, 71) 70px 70px, rgb(195, 75, 71) 71px 71px, rgb(195, 75, 71) 72px 72px, rgb(196, 75, 71) 73px 73px, rgb(196, 75, 71) 74px 74px, rgb(196, 75, 71) 75px 75px, rgb(196, 75, 71) 76px 76px, rgb(196, 75, 71) 77px 77px, rgb(196, 75, 71) 78px 78px, rgb(197, 75, 71) 79px 79px, rgb(197, 75, 71) 80px 80px, rgb(197, 75, 71) 81px 81px, rgb(197, 75, 71) 82px 82px, rgb(197, 75, 71) 83px 83px, rgb(197, 76, 72) 84px 84px, rgb(198, 76, 72) 85px 85px, rgb(198, 76, 72) 86px 86px, rgb(198, 76, 72) 87px 87px, rgb(198, 76, 72) 88px 88px, rgb(198, 76, 72) 89px 89px, rgb(198, 76, 72) 90px 90px, rgb(199, 76, 72) 91px 91px, rgb(199, 76, 72) 92px 92px, rgb(199, 76, 72) 93px 93px, rgb(199, 76, 72) 94px 94px, rgb(199, 76, 72) 95px 95px, rgb(199, 76, 72) 96px 96px, rgb(200, 76, 72) 97px 97px, rgb(200, 76, 72) 98px 98px, rgb(200, 76, 72) 99px 99px, rgb(200, 77, 73) 100px 100px, rgb(200, 77, 73) 101px 101px, rgb(200, 77, 73) 102px 102px, rgb(200, 77, 73) 103px 103px, rgb(201, 77, 73) 104px 104px, rgb(201, 77, 73) 105px 105px, rgb(201, 77, 73) 106px 106px, rgb(201, 77, 73) 107px 107px, rgb(201, 77, 73) 108px 108px, rgb(201, 77, 73) 109px 109px, rgb(202, 77, 73) 110px 110px, rgb(202, 77, 73) 111px 111px, rgb(202, 77, 73) 112px 112px, rgb(202, 77, 73) 113px 113px, rgb(202, 77, 73) 114px 114px, rgb(202, 77, 73) 115px 115px, rgb(203, 77, 73) 116px 116px, rgb(203, 78, 74) 117px 117px, rgb(203, 78, 74) 118px 118px, rgb(203, 78, 74) 119px 119px, rgb(203, 78, 74) 120px 120px, rgb(203, 78, 74) 121px 121px, rgb(204, 78, 74) 122px 122px, rgb(204, 78, 74) 123px 123px, rgb(204, 78, 74) 124px 124px, rgb(204, 78, 74) 125px 125px, rgb(204, 78, 74) 126px 126px, rgb(204, 78, 74) 127px 127px, rgb(205, 78, 74) 128px 128px, rgb(205, 78, 74) 129px 129px, rgb(205, 78, 74) 130px 130px, rgb(205, 78, 74) 131px 131px, rgb(205, 78, 74) 132px 132px, rgb(205, 78, 74) 133px 133px, rgb(206, 79, 75) 134px 134px, rgb(206, 79, 75) 135px 135px, rgb(206, 79, 75) 136px 136px, rgb(206, 79, 75) 137px 137px, rgb(206, 79, 75) 138px 138px, rgb(206, 79, 75) 139px 139px, rgb(207, 79, 75) 140px 140px, rgb(207, 79, 75) 141px 141px, rgb(207, 79, 75) 142px 142px, rgb(207, 79, 75) 143px 143px, rgb(207, 79, 75) 144px 144px, rgb(207, 79, 75) 145px 145px, rgb(208, 79, 75) 146px 146px, rgb(208, 79, 75) 147px 147px, rgb(208, 79, 75) 148px 148px, rgb(208, 79, 75) 149px 149px, rgb(208, 80, 76) 150px 150px, rgb(208, 80, 76) 151px 151px, rgb(209, 80, 76) 152px 152px, rgb(209, 80, 76) 153px 153px, rgb(209, 80, 76) 154px 154px, rgb(209, 80, 76) 155px 155px, rgb(209, 80, 76) 156px 156px, rgb(209, 80, 76) 157px 157px, rgb(210, 80, 76) 158px 158px, rgb(210, 80, 76) 159px 159px, rgb(210, 80, 76) 160px 160px, rgb(210, 80, 76) 161px 161px, rgb(210, 80, 76) 162px 162px, rgb(210, 80, 76) 163px 163px, rgb(211, 80, 76) 164px 164px, rgb(211, 80, 76) 165px 165px, rgb(211, 80, 76) 166px 166px, rgb(211, 81, 77) 167px 167px, rgb(211, 81, 77) 168px 168px, rgb(211, 81, 77) 169px 169px, rgb(212, 81, 77) 170px 170px, rgb(212, 81, 77) 171px 171px, rgb(212, 81, 77) 172px 172px, rgb(212, 81, 77) 173px 173px, rgb(212, 81, 77) 174px 174px, rgb(212, 81, 77) 175px 175px, rgb(213, 81, 77) 176px 176px, rgb(213, 81, 77) 177px 177px, rgb(213, 81, 77) 178px 178px, rgb(213, 81, 77) 179px 179px, rgb(213, 81, 77) 180px 180px, rgb(213, 81, 77) 181px 181px, rgb(214, 81, 77) 182px 182px, rgb(214, 81, 77) 183px 183px, rgb(214, 82, 78) 184px 184px, rgb(214, 82, 78) 185px 185px, rgb(214, 82, 78) 186px 186px, rgb(214, 82, 78) 187px 187px, rgb(215, 82, 78) 188px 188px, rgb(215, 82, 78) 189px 189px, rgb(215, 82, 78) 190px 190px, rgb(215, 82, 78) 191px 191px, rgb(215, 82, 78) 192px 192px, rgb(215, 82, 78) 193px 193px, rgb(216, 82, 78) 194px 194px, rgb(216, 82, 78) 195px 195px, rgb(216, 82, 78) 196px 196px, rgb(216, 82, 78) 197px 197px, rgb(216, 82, 78) 198px 198px, rgb(216, 82, 78) 199px 199px, rgb(217, 83, 79) 200px 200px
+
+    a.btn:hover
+      color: #d9534f
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  Mobile Styles
+/*-----------------------------------------------------------------------------------*/
+@media (max-width: 1200px)
+  .row + .row
+    margin-top: 0
+
+  [class*="col-sm"], [class*="col-md"], [class*="col-lg"], [class*="col-xs"]
+    margin-bottom: 20px
+
+
+@media (max-width: 979px)
+  .stats-container
+    height: 470px
+    [class^="col-"], [class*="col-"]
+      border-bottom: 1px solid #e6e6e6
+      padding-bottom: 12px
+      height: auto
+
+
+@media (max-width: 767px)
+  html.nav-open
+    overflow: hidden
+
+  body
+    padding: 0 !important
+
+    &.nav-open
+      overflow: hidden
+
+      .navbar, .container-fluid.main-content
+        left: 220px
+
+      .container-fluid.main-nav
+        left: 0
+
+  .container-fluid.main-content
+    position: relative
+    left: 0
+    @include transition(left .3s)
+
+  .navbar
+    height: 45px !important
+    position: relative
+    @include transition(left .3s)
+
+    .container-fluid.top-bar
+      border-bottom: 0
+
+      .logo
+        float: right
+        margin: 13px 5px 0 0
+
+    .container-fluid.main-nav
+      position: fixed
+      left: -240px
+      top: 0
+      padding-top: 0 !important
+      height: 100%
+      width: 240px
+      background: #ddd
+      box-shadow: inset -4px 0 0 rgba(0,0,0,.05)
+      @include transition(left .3s)
+      -webkit-overflow-scrolling: touch
+      overflow-y: auto
+
+      .nav-collapse .nav
+        padding-left: 15px
+        text-align: left
+
+        > li
+          display: block
+          text-align: left
+          margin: 0
+          background-color: transparent !important
+
+          > .dropdown-menu
+            position: relative
+            background: none
+            box-shadow: none
+            margin: 0
+            width: 100%
+            float: none
+            border-bottom: 1px solid #AAA
+            text-align: left
+
+            li a
+              border-color: #AAA
+              margin-left: 15px
+              color: #777
+
+              &.current
+                border-bottom-color: $accent-color
+                color: $accent-color
+
+              &:hover, &:active
+                color: black
+                border-bottom-color: black
+
+          > a
+            display: block
+            text-align: left
+            padding: 0
+            font-size: 14px
+            line-height: 44px
+            height: 46px
+            color: #777
+            border-bottom: 1px solid #AAA
+            background-color: transparent !important
+
+            &:hover, &:active
+              color: black
+              border-bottom-color: black
+
+            span
+              display: block
+              float: left
+              margin: 8px 15px 0 0
+              background-position: left -140px
+
+            .caret
+              float: right
+              margin: 20px 15px 0 0
+
+            &.current
+              color: $accent-color
+              border-bottom-color: $accent-color
+
+              span
+                background-position: left -28px
+
+              .caret
+                border-top-color: $accent-color
+
+            &:hover
+              background: #eee
+              background: rgba(0,0,0,.04)
+
+          &.open, &.active, &.open.active
+            > a
+              .caret
+                border-bottom: 4px solid #999
+                border-top-color: transparent
+                margin-top: 16px
+
+
+  .widget-container > div .heading
+    padding-left: 5px
+
+  .pricing-table
+    [class^="col-"], [class*="col-"]
+      padding-top: 0px
+
+      &.featured
+        .widget-container
+          padding: 0
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1)
+
+    .pricing-categories
+      padding-top: 58px
+
+  .messages
+    height: auto
+
+    > .widget-container
+      background: transparent
+      box-shadow: none
+
+    .message-list
+      height: 400px
+      box-shadow: 0 1px 2px rgba(0,0,0,.1)
+
+    .message-content
+      background: #FFF
+      height: auto
+      box-shadow: 0 1px 2px rgba(0,0,0,.1)
+      margin-bottom: 0
+
+      .message-header
+        padding-bottom: 15px
+
+        .date
+          float: none !important
+
+
+@media (max-width: 600px)
+  body.login1
+    padding: 15px
+    background-size: auto
+
+    &.signup
+      .login-container
+        height: auto
+        margin-top: 0
+
+    .login-container
+      width: 80%
+      height: 300px
+      padding: 25px
+      position: absolute
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+      margin: auto
+
+      img
+        margin-bottom: 20px
+
+      input[type="submit"]
+        margin-bottom: 20px
+
+      .form-options
+        margin: 15px 0 15px
+
+      .social-login
+        margin-bottom: 15px
+
+        > .btn
+          width: 100%
+          margin-bottom: 6px
+
+      p.signup a
+        display: block
+
+  .style-selector .style-selector-container .style-toggle
+    display: none
+
+  .page-title
+    padding: 0 10px
+
+    h1
+      margin-bottom: 12px
+
+  .row
+    margin: 0
+
+  .fc-header-right
+    display: none
+
+  .task-widget
+    li
+      &.label
+        display: none
+  .padded
+    padding: 10px
+
+  .table th
+    font-size: 13px
+
+
+  .pie-chart ul.chart-key
+    margin: 15px 0 10px
+    padding: 0
+    width: 100%
+
+    li
+      display: inline-block
+      margin: 4px 10px
+
+  #composite-chart-1 canvas
+    width: 100% !important
+
+  .social-wrapper
+    padding: 0 15px
+    .item
+      width: 100% !important
+      margin-bottom: 15px !important
+
+  .nav-tabs > li > a >
+    [class*="fa"]
+      margin-right: 0 !important
+
+      &+ span
+        display: none
+
+  body.fourofour
+    .fourofour-container
+      max-width: 320px
+      width: 320px
+      margin: -190px 0 0 -160px
+
+      h1
+        font-size: 160px
+
+      h2
+        font-size: 28px
+
+  .widget-container.chat-page
+    padding: 0
+    height: auto
+    margin-bottom: 45px
+
+    .contact-list
+      display: none
+
+    .post-message
+      position: fixed
+      bottom: 0
+      left: 0
+
+  .chat
+    .widget-content
+      padding-right: 10px
+
+      ul li
+        padding-right: 0
+
+        &.current-user
+          padding-left: 0
+
+  ul.timeline
+    padding: 15px 10px
+
+    &:after
+      left: 28px
+
+    li
+      padding-left: 0
+      margin-bottom: 16px
+
+      .timeline-time
+        position: relative
+        right: auto
+        top: 0
+        text-align: left
+        margin: 0 0 6px 56px
+
+        strong
+          display: inline-block
+          margin-right: 10px
+
+      .timeline-icon
+        top: 52px
+        left: -2px
+        margin-left: 0
+
+      .timeline-content
+        margin-left: 56px
+        box-shadow: 0 1px 2px rgba(0,0,0,.1)
+        position: relative
+
+      &:nth-child(odd)
+        padding-right: 0
+
+        .timeline-time
+          position: relative
+          right: auto
+          left: auto
+          top: 0
+          text-align: left
+          margin: 0 0 6px 56px
+
+        .timeline-content
+          margin-right: 0
+          margin-left: 55px
+
+          &:after
+            right: auto
+            left: -20px
+            border: 10px solid transparent
+            border-right: 10px solid #FFF
+
+          &:before
+            right: auto
+            left: -24px
+            border: 12px solid transparent
+            border-right: 12px solid #DDD
+
+    &.animated
+      li
+        &:nth-child(odd)
+          .timeline-content
+            left: 20px
+
+        &.active
+          &:nth-child(odd)
+            .timeline-content
+              left: 0
