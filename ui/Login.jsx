@@ -11,6 +11,7 @@ export default class Login extends React.Component {
         this.state = { loginPage: true };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSignup = this.handleSignup.bind(this);
+        this.changePage = this.changePage.bind(this);
     }
 
     static defaultProps = {
@@ -87,67 +88,72 @@ export default class Login extends React.Component {
     }
 
     render() {
-      const loginPage = this.state.loginPage;
       let pageToDisplay = null;
+      const loginPage = this.state.loginPage;
+      const changePageStyle = {
+        position: 'absolute',
+        bottom: 15,
+        right: 20,
+      };
+      const titleStyle = {
+        width: "100%",
+        maxWidth: "700px",
+      };
 
       if (loginPage) {
         // Page for login
         pageToDisplay =
-            <div className="login-wrapper">
-            <img width="200" height="60" src="public/images/title.png"/>
-              <div className="login-container">
-                <div className="row">
-                  <form noValidate={this.props.noValidate} onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                      <input className="form-control" ref="email" placeholder="Adresse e-mail" type="email"/>
-                    </div>
-                    <div className="form-group">
-                      <input className="form-control" ref="password" placeholder="Mode de passe" type="password"/>
-                    </div>
-                    <div className="form-group">
-                      <input type="submit" ref="submit" value=""/>
-                    </div>
-                  </form>
+          <div className="login-container">
+            <div className="row">
+              <form noValidate={this.props.noValidate} onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                  <input className="form-control" ref="email" placeholder="email" type="email"/>
                 </div>
-                <div className="row">
-                  <button onClick={this.changePage} className="btn btn-lg btn-primary" type="button">Inscription</button>
-                  <p>{this.state.loginErrMsg}</p>
+                <div className="form-group">
+                  <input className="form-control" ref="password" placeholder="password" type="password"/>
                 </div>
-              </div>
-            </div>;
+                <div className="form-group">
+                  <input type="submit" ref="submit" value=""/>
+                </div>
+              </form>
+            </div>
+            <a onClick={this.changePage} style={changePageStyle} href="#">signup</a>
+            <p>{this.state.loginErrMsg}</p>
+          </div>;
       } else {
         // Page for signup
         pageToDisplay =
-          <div className="login-wrapper">
-            <img width="200" height="60" src="public/images/title.png"/>
-            <div className="login-container-signup">
-              <div className="row">
-                <form noValidate={this.props.noValidate} onSubmit={this.handleSignup}>
-                  <div className="form-group">
-                    <input className="form-control" ref="email" placeholder="Adresse e-mail" type="email"/>
-                  </div>
-                  <div className="form-group">
-                    <input className="form-control" ref="username" placeholder="Nom d'utilisateur" type="text"/>
-                  </div>
-                  <div className="form-group">
-                    <input className="form-control" ref="password" placeholder="Mode de passe" type="password"/>
-                  </div>
-                  <div className="form-group">
-                    <input type="submit" ref="submit" value=""/>
-                  </div>
-                </form>
-              </div>
-              <div className="row">
-                <button onClick={this.changePage} className="btn btn-lg btn-primary" type="button">Connexion</button>
-                <p>{this.state.loginErrMsg}</p>
-              </div>
+          <div className="login-container login-container-signup">
+            <div className="row">
+              <form noValidate={this.props.noValidate} onSubmit={this.handleSignup}>
+                <div className="form-group">
+                  <input className="form-control" ref="email" placeholder="email" type="email"/>
+                </div>
+                <div className="form-group">
+                  <input className="form-control" ref="username" placeholder="username" type="text"/>
+                </div>
+                <div className="form-group">
+                  <input className="form-control" ref="password" placeholder="password" type="password"/>
+                </div>
+                <div className="form-group">
+                  <input className="form-control" ref="password2" placeholder="password again" type="password"/>
+                </div>
+                <div className="form-group">
+                  <input type="submit" ref="submit" value=""/>
+                </div>
+              </form>
             </div>
+            <a onClick={this.changePage} style={changePageStyle} href="#">login</a>
+            <p>{this.state.loginErrMsg}</p>
           </div>;
       }
 
       return (
           <div className="login-wrapper">
-            {pageToDisplay}
+            <div className="login-subwrapper">
+              <img style={titleStyle} src="/images/title.png"/>
+              {pageToDisplay}
+            </div>
           </div>
         );
       }
