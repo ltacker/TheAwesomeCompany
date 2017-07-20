@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "montez";
+  src: url('../fonts/Montez-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: "asul";
+  src: url('../fonts/Asul/Asul-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: "chivo";
+  src: url('../fonts/Chivo/Chivo-Regular.ttf') format('truetype');
+}
