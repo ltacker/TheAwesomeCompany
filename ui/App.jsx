@@ -7,7 +7,7 @@ import LogoutButton from './LogoutButton.jsx';
 export default class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {connected: true};
+        //this.state = {connected: true};
     }
 
     loginUser() {
@@ -19,29 +19,17 @@ export default class App extends Component {
     }
 
     render() {
-        let pageToDisplay = null;
         var u = Meteor.user()
-        // if (!u) {
-        //     pageToDisplay = <Login onLogging={this.loginUser} />;
-        // } else {
-        //     pageToDisplay =
-        //       <div>
-        //         <p>{u.username}</p>
-        //         <LogoutButton onLogout={this.logoutUser} />
-        //       </div>;
-        // }
-        //
-        // return (
-        //     pageToDisplay
-        // );
+
         if (!u) {
-             return <Login onLogging={this.loginUser} />;
+             return <Login onLogging={this.loginUser.bind(this)} />;
          } else {
-             return
+             return (
                <div>
                  <p>{u.username}</p>
-                 <LogoutButton onLogout={this.logoutUser} />
-               </div>;
+                 <LogoutButton onLogout={this.logoutUser.bind(this)} />
+               </div>
+             );
          }
     }
 }

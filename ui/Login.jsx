@@ -37,32 +37,41 @@ export default class Login extends React.Component {
     }
 
     handleSignup(e) {
+        var self = this;
         e.preventDefault();
         if (this.props.type === "email-password") {
             var newUserData = {
-              username: this.refs.username.getDOMNode().value,
-              email: this.refs.email.getDOMNode().value,
-              password: this.refs.password.getDOMNode().value
+              username: this.refs.username.value,
+              email: this.refs.email.value,
+              password: this.refs.password.value
             };
-            Accounts.createUser(newUserData, function(err) {
-                if (err) {
-                    self.setState({loginErrMsg: err.reason});
-                    self.props.onLoginError(err);
-                    self.dbug("ERROR", err.reason);
-                } else {
-                    console.log("Success", Meteor.user());
-                    this.changePage();
-                    self.setState({loginErrMsg: 'Compte crée'});
-                }
-            });
+            var password2 = this.refs.password2.value;
+            if (newUserData.password == password2) {
+                Accounts.createUser(newUserData, function(err) {
+                    if (err) {
+                        self.setState({loginErrMsg: err.reason});
+                        self.props.onLoginError(err);
+                        self.dbug("ERROR", err.reason);
+                    } else {
+                        console.log("Success", Meteor.user());
+                        self.setState({
+                          loginPage: true,
+                          loginErrMsg: 'Account created'
+                         });
+                    }
+                });
+            }
+            else {
+                self.setState({loginErrMsg: 'Passwords don\'t match'});
+            }
         }
     }
 
     handleSubmit(e) {
         e.preventDefault();
         if (this.props.type === "email-password") {
-            var email = this.refs.email.getDOMNode().value;
-            var pass = this.refs.password.getDOMNode().value;
+            var email = this.refs.email.value;
+            var pass = this.refs.password.value;
             this.loginWithPassword(email, pass);
             this.dbug("Form submit", email, pass, e);
         }
@@ -77,7 +86,7 @@ export default class Login extends React.Component {
                 self.dbug("ERROR", err.reason);
             } else {
                 console.log("Success", Meteor.user());
-                this.props.onLogging();
+                self.props.onLogging();
             }
         });
     }
@@ -90,14 +99,20 @@ export default class Login extends React.Component {
     render() {
       let pageToDisplay = null;
       const loginPage = this.state.loginPage;
+      const titleStyle = {
+        width: "100%",
+        maxWidth: "700px",
+        height: "20%",
+        maxHeight: "150px",
+      };
       const changePageStyle = {
         position: 'absolute',
         bottom: 15,
         right: 20,
       };
-      const titleStyle = {
-        width: "100%",
-        maxWidth: "700px",
+      const errMsgStyle = {
+        position: 'absolute',
+        bottom: 15,
       };
 
       if (loginPage) {
@@ -118,7 +133,7 @@ export default class Login extends React.Component {
               </form>
             </div>
             <a onClick={this.changePage} style={changePageStyle} href="#">signup</a>
-            <p>{this.state.loginErrMsg}</p>
+            <p style={errMsgStyle}>{this.state.loginErrMsg}</p>
           </div>;
       } else {
         // Page for signup
@@ -144,7 +159,7 @@ export default class Login extends React.Component {
               </form>
             </div>
             <a onClick={this.changePage} style={changePageStyle} href="#">login</a>
-            <p>{this.state.loginErrMsg}</p>
+            <p style={errMsgStyle}>{this.state.loginErrMsg}</p>
           </div>;
       }
 
