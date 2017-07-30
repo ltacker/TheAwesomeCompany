@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 const { Fullpage, Slide, HorizontalSlider } = require('fullpage-react');
-import { Info1, Info2 } from './Info.jsx';
+import Info1, { Info2, Info3 } from './Info.jsx';
 
 var noop = function() {};
 
@@ -184,7 +184,8 @@ export default class Login extends React.Component {
             </div>
           </Slide>,
           <Slide> <Info1 /> </Slide>,
-          <Slide> <Info2 /> </Slide>
+          <Slide> <Info2 /> </Slide>,
+          <Slide> <Info3 /> </Slide>
       ];
       fullPageOptions.slides = slides;
 
