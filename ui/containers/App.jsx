@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
-import Login from './Login.jsx';
-import LogoutButton from './LogoutButton.jsx';
+import Login from '/ui/containers/Login.jsx';
+import LogoutButton from '/ui/components/LogoutButton.jsx';
 
 // App component - represents the whole app
 export default class App extends Component {
