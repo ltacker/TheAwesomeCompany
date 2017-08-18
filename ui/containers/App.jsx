@@ -22,7 +22,7 @@ export default class App extends Component {
         var u = Meteor.user()
 
         if (!u) {
-             return <Login onLogging={this.loginUser.bind(this)} />;
+             return <Login onLogin={this.loginUser.bind(this)} />;
          } else {
              return (
                <div>

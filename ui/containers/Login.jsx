@@ -88,7 +88,7 @@ export default class Login extends React.Component {
                 self.dbug("ERROR", err.reason);
             } else {
                 console.log("Success", Meteor.user());
-                self.props.onLogging();
+                self.props.onLogin();
             }
         });
     }
