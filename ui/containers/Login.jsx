@@ -102,10 +102,10 @@ export default class Login extends React.Component {
       let pageToDisplay = null;
       const loginPage = this.state.loginPage;
       const titleStyle = {
-        width: "100%",
-        maxWidth: "700px",
-        height: "20%",
-        maxHeight: "150px",
+        width: "90%",
+        maxWidth: "800px",
+        height: "auto",
+        marginBottom: "5%",
       };
       const changePageStyle = {
         position: 'absolute',
@@ -168,7 +168,7 @@ export default class Login extends React.Component {
       const fullPageOptions = {
         scrollSensitivity: 7,
         touchSensitivity: 7,
-        scrollSpeed: 500,
+        scrollSpeed: 1000,
         hideScrollBars: true,
         enableArrowKeys: true,
         breakpoint: 375
@@ -191,7 +191,18 @@ export default class Login extends React.Component {
 
 
       return (
-          <Fullpage {...fullPageOptions} />
+          //<Fullpage {...fullPageOptions} />
+          <div>
+            <div className="login-wrapper">
+              <div className="login-subwrapper">
+                <img style={titleStyle} src="/images/title.png"/>
+                {pageToDisplay}
+              </div>
+            </div>
+            <Info1 />
+            <Info2 />
+            <Info3 />
+          </div>
         );
       }
 }
