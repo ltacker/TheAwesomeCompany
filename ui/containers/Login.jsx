@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
-const { Fullpage, Slide, HorizontalSlider } = require('fullpage-react');
 import Info1, { Info2, Info3 } from '/ui/components/Info.jsx';
 
 var noop = function() {};
@@ -165,33 +164,7 @@ export default class Login extends React.Component {
           </div>;
       }
 
-      const fullPageOptions = {
-        scrollSensitivity: 7,
-        touchSensitivity: 7,
-        scrollSpeed: 1000,
-        hideScrollBars: true,
-        enableArrowKeys: true,
-        breakpoint: 375
-      };
-
-      const slides = [
-          <Slide>
-            <div className="login-wrapper">
-              <div className="login-subwrapper">
-                <img style={titleStyle} src="/images/title.png"/>
-                {pageToDisplay}
-              </div>
-            </div>
-          </Slide>,
-          <Slide> <Info1 /> </Slide>,
-          <Slide> <Info2 /> </Slide>,
-          <Slide> <Info3 /> </Slide>
-      ];
-      fullPageOptions.slides = slides;
-
-
       return (
-          //<Fullpage {...fullPageOptions} />
           <div>
             <div className="login-wrapper">
               <div className="login-subwrapper">
