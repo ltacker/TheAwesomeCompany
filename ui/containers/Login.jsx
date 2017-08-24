@@ -102,7 +102,7 @@ export default class Login extends React.Component {
       const loginPage = this.state.loginPage;
       const titleStyle = {
         width: "90%",
-        maxWidth: "800px",
+        maxWidth: "500px",
         height: "auto",
         marginBottom: "5%",
       };
